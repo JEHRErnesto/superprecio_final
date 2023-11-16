@@ -54,7 +54,7 @@ class homeState extends State<home> {
 
   _getDrawerItem(int position) {
     switch (position) {
-     /* case 0:
+      /* case 0:
         return MapPage();
       case 1:
         return MapWithMarker();
@@ -72,10 +72,6 @@ class homeState extends State<home> {
     });
   }
 
-  
-
-
- 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -187,8 +183,32 @@ class homeState extends State<home> {
                 ),
                 title: Text('Cerrar sesión'),
                 onTap: () {
-                  FirebaseAuth.instance.signOut();
-                  Navigator.pushNamed(context, "/login");
+                  // Muestra un cuadro de diálogo de confirmación
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('¿Estás seguro de cerrar sesión?'),
+                        actions: <Widget>[
+                          // Botón para cerrar sesión
+                          TextButton(
+                            onPressed: () {
+                              FirebaseAuth.instance.signOut();
+                              Navigator.pushNamed(context, "/login");
+                            },
+                            child: Text('Sí'),
+                          ),
+                          // Botón para cancelar
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Text('No'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
                 },
               ),
             ),
