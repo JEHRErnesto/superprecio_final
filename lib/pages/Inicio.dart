@@ -283,6 +283,74 @@ class _MapPageState extends State<MapPage> {
         },
       ),
     );
+    _markers.add(
+      Marker(
+        markerId: MarkerId('marker_id_3'),
+        position: LatLng(13.504898, -88.874929), // Ubicación específica 2
+        icon: puma,
+        onTap: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // Título encima de la imagen
+                    Text(
+                      'Gasolinera PUMA',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+
+                    // Imagen
+                    Center(
+                      child: Image.asset(
+                        'img/gasolineras/puma.png',
+                        height: 200,
+                        width: 200,
+                      ),
+                    ),
+
+                    // Título "Gasolina"
+                    Text(
+                      'Gasolina',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    // Precios de gasolina
+                    Text('Regular: \$4.05'),
+                    Text('Super: \$4.46'),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    // Título "Diesel"
+                    Text(
+                      'Diesel: \$3.95',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    // Botón "Dar ubicación"
+                    ElevatedButton(
+                      onPressed: () {
+                        _calculateAndDisplayRoute(
+                          const LatLng(13.504898,
+                              -88.874929), // Cambia esto por la posición del marcador
+                        );
+                      },
+                      child: Text('Dar ubicación'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+        },
+      ),
+    );
   }
 
 
