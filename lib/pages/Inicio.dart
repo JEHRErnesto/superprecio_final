@@ -420,6 +420,75 @@ class _MapPageState extends State<MapPage> {
         },
       ),
     );
+     _markers.add(
+      Marker(
+        markerId: MarkerId('marker_id_5'),
+        position: LatLng(
+            13.489563704054635, -88.85593957054992), // Ubicación específica 2
+        icon: texaco,
+        onTap: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // Título encima de la imagen
+                    Text(
+                      'Gasolinera Texaco',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+
+                    // Imagen
+                    Center(
+                      child: Image.asset(
+                        'img/gasolineras/Texaco.png',
+                        height: 200,
+                        width: 200,
+                      ),
+                    ),
+
+                    // Título "Gasolina"
+                    Text(
+                      'Gasolina',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    // Precios de gasolina
+                    Text('Regular: \$4.10'),
+                    Text('Super: \$4.48'),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    // Título "Diesel"
+                    Text(
+                      'Diesel: \$3.99',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    // Botón "Dar ubicación"
+                    ElevatedButton(
+                      onPressed: () {
+                        _calculateAndDisplayRoute(
+                          const LatLng(13.489563704054635,
+                              -88.85593957054992), // Cambia esto por la posición del marcador
+                        );
+                      },
+                      child: Text('Dar ubicación'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+        },
+      ),
+    );
   }
 
 
