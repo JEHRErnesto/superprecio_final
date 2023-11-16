@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
-import 'package:superprecio/pages/home.dart';
+import 'package:superprecio/pages/solicitarGrua.dart';
+import 'package:superprecio/pages/solicitarMecanico.dart';
 import 'package:superprecio/views/Iniciar.dart';
 import 'package:superprecio/views/login_page.dart';
 import 'package:superprecio/views/sign_up_auth.dart';
+import 'package:superprecio/pages/home.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -34,12 +36,14 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: "/SplashScreen",
       routes: {
-        "/": (context) =>  home(),
+       "/": (context) =>  home(),
         /*"/add": (context) => const AddStudents(),
         "/edit": (context) => const EditStudents(),*/
         "/login": (context) => const LoginPage(),
         "/signup": (context) => const SignUpPage(),
         "/SplashScreen": (context) =>  SplashScreen(),
+        "/GruaForm": (context) => GruaForm(),
+        "/MecanicoForm": (context) => MecanicoForm(),
       },
     );
   }
