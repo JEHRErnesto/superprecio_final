@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
+import 'package:superprecio/pages/home.dart';
+import 'package:superprecio/views/Iniciar.dart';
 import 'package:superprecio/views/login_page.dart';
 import 'package:superprecio/views/sign_up_auth.dart';
 import 'firebase_options.dart';
@@ -30,13 +32,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      initialRoute: "/login",
+      initialRoute: "/SplashScreen",
       routes: {
- 
+        "/": (context) =>  home(),
         /*"/add": (context) => const AddStudents(),
         "/edit": (context) => const EditStudents(),*/
         "/login": (context) => const LoginPage(),
         "/signup": (context) => const SignUpPage(),
+        "/SplashScreen": (context) =>  SplashScreen(),
       },
     );
   }
