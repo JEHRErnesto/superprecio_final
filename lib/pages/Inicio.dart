@@ -131,6 +131,18 @@ class _MapPageState extends State<MapPage> {
     }
   }
 
+  void _addMarkers() async {
+    Future<BitmapDescriptor> _loadCustomIcon(String imagePath) async {
+      final ByteData byteData = await rootBundle.load(imagePath);
+      final Uint8List uint8List = byteData.buffer.asUint8List();
+      return BitmapDescriptor.fromBytes(uint8List);
+    }
+
+    final BitmapDescriptor puma = await _loadCustomIcon('img/gasolineras/puma.png');
+    final BitmapDescriptor texaco = await _loadCustomIcon('img/gasolineras/Texaco.png');
+    final BitmapDescriptor uno = await _loadCustomIcon('img/gasolineras/UNO.png');
+  }
+
 
   Future<Position> determinePosition() async {
     LocationPermission permission;
