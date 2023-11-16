@@ -340,9 +340,19 @@ class _MapPageState extends State<MapPage> {
         ),
         myLocationButtonEnabled: false,
         zoomControlsEnabled: false,
+        markers: _markers,
+        polylines: _polylines,
         onMapCreated: (controller) {
           _googleMapController = controller;
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Theme.of(context).primaryColor,
+        foregroundColor: Colors.black,
+        onPressed: () {
+          _getCurrentLocation(); // Actualiza la ubicación actual al presionar el botón
+        },
+        child: Image.asset('img/iconos/centrar.png', width: 30, height: 30),
       ),
     );
   }
