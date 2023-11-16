@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "390785316771",
+    "project_id": "superprecio-c1849",
+    "storage_bucket": "superprecio-c1849.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390785316771:android:6e789847ad50f196400c16",
+        "android_client_info": {
+          "package_name": "com.superprecio.superprecio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsp5mMe4jSI-aV8stmu_0hzE4BrBlFwRs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
