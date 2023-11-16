@@ -25,6 +25,18 @@ class _MapPageState extends State<MapPage> {
   final directionsApiClient =
       GoogleMapsDirections(apiKey: 'AIzaSyD57kSeEEU11CaUK30VHYl-8i9M58ePwP8');
 
+   @override
+  void initState() {
+    super.initState();
+    _getCurrentLocation();
+    _addMarkers();
+
+    Timer.periodic(Duration(seconds: 10), (timer) {
+      // Obtener la ubicación actual y actualizar la ruta
+      _getCurrentLocation();
+    });
+  }
+
 
   void _calculateAndDisplayRoute(LatLng destination) async {
     if (_currentPosition == null) {
