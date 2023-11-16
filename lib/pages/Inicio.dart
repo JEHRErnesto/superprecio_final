@@ -118,6 +118,19 @@ class _MapPageState extends State<MapPage> {
     }
   }
 
+  void _getCurrentLocation() async {
+    try {
+      _currentPosition = await determinePosition();
+      if (_currentPosition != null) {
+        LatLng initialPosition =
+            LatLng(_currentPosition!.latitude, _currentPosition!.longitude);
+        _updateCameraPosition(initialPosition);
+      }
+    } catch (e) {
+      print('Error obtaining current location: $e');
+    }
+  }
+
 
   Future<Position> determinePosition() async {
     LocationPermission permission;
@@ -129,6 +142,35 @@ class _MapPageState extends State<MapPage> {
       }
     }
     return await Geolocator.getCurrentPosition();
+  }
+
+  void _updateCameraPosition(LatLng target) {
+    setState(() {
+      _loadCustomIcon().then((BitmapDescriptor customIcon) {
+        _markers.add(
+          Marker(
+            markerId: MarkerId('current_location'),
+            position: target,
+            icon: customIcon,
+          ),
+        );
+
+        _googleMapController.animateCamera(
+          CameraUpdate.newCameraPosition(
+            CameraPosition(
+              target: target,
+              zoom: 15.0, // Ajusta el nivel de zoom según tus necesidades
+            ),
+          ),
+        );
+      });
+    });
+  }
+
+  Future<BitmapDescriptor> _loadCustomIcon() async {
+    final ByteData byteData = await rootBundle.load('img/pin/pin.png');
+    final Uint8List uint8List = byteData.buffer.asUint8List();
+    return BitmapDescriptor.fromBytes(uint8List);
   }
 
 
