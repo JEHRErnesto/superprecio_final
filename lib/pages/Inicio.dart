@@ -141,6 +141,79 @@ class _MapPageState extends State<MapPage> {
     final BitmapDescriptor puma = await _loadCustomIcon('img/gasolineras/puma.png');
     final BitmapDescriptor texaco = await _loadCustomIcon('img/gasolineras/Texaco.png');
     final BitmapDescriptor uno = await _loadCustomIcon('img/gasolineras/UNO.png');
+
+    _markers.add(
+      Marker(
+        markerId: MarkerId('marker_id_1'),
+        position: LatLng(13.504599, -88.874398), // Ubicación específica 1
+        icon: texaco,
+        onTap: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // Título encima de la imagen
+                    Text(
+                      'Gasolinera Texaco',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    // Imagen
+                    Center(
+                      child: Image.asset(
+                        'img/gasolineras/Texaco.png',
+                        height: 200,
+                        width: 200,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    // Título "Gasolina"
+                    Text(
+                      'Gasolina',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    // Precios de gasolina
+                    Text('Regular: \$4.10'),
+                    Text('Super: \$4.48'),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    // Título "Diesel"
+                    Text(
+                      'Diesel: \$3.99',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    // Botón "Dar ubicación"
+                    ElevatedButton(
+                      onPressed: () {
+                        _calculateAndDisplayRoute(
+                          const LatLng(13.504599,
+                              -88.874398), // Cambia esto por la posición del marcador
+                        );
+                      },
+                      child: Text('Dar ubicación'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+        },
+      ),
+    );
   }
 
 
